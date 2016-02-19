@@ -31,9 +31,6 @@ public class SortedLinkedListSet<E> implements SimpleSet{
             head.next = new Node(x);
             return true;
         }
-        if(this.contains(x)){
-            return false;
-        }
         Node tempNode = head;
         while(tempNode.getNext() != null){
             if(tempNode.getNext().elt.compareTo(x) == 0){
@@ -70,8 +67,13 @@ public class SortedLinkedListSet<E> implements SimpleSet{
 
     @Override
     public boolean contains(Comparable x) {
-        //todo implement
-        return false;
+        boolean isInSet = false;
+        while(head.next != null && !isInSet) {
+            if(head.elt.equals(x)) {
+                isInSet = true;
+            }
+        }
+        return isInSet;
     }
 
     public class Node {

@@ -1,7 +1,7 @@
 /**
  * Created by fredrik on 2016-02-19.
  */
-public class SplayTreeSet<T> implements SimpleSet<Integer> {
+public class SplayTreeSet<T> implements SimpleSet {
     public SplayTreeSet() {
     }
 
@@ -11,17 +11,17 @@ public class SplayTreeSet<T> implements SimpleSet<Integer> {
     }
 
     @Override
-    public boolean add(Integer x) {
+    public boolean add(Comparable x) {
         return false;
     }
 
     @Override
-    public boolean remove(Integer x) {
+    public boolean remove(Comparable x) {
         return false;
     }
 
     @Override
-    public boolean contains(Integer x) {
+    public boolean contains(Comparable x) {
         return false;
     }
 }
