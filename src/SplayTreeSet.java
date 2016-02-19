@@ -60,9 +60,32 @@ public class SplayTreeSet<T> implements SimpleSet {
 
     @Override
     public boolean contains(Comparable x) {
+        if (x == null) {
+            throw new NullPointerException();
+        }
+        Node next = root;
+        boolean keepLooping = true;
+        boolean isInTree = false;
+        while (keepLooping) { //Bad but can't find anything smarter
+            if (next.elt.compareTo(x) > 0) {
+                if (next.getLeft() == null) {
+                    keepLooping = false;
+                } else {
+                    next = next.getLeft();
+                }
+            } else if (next.elt.compareTo(x) < 0) {
+                if (next.getRight() == null) {
+                    keepLooping = false;
+                } else {
+                    next = next.getRight();
+                }
+            } else {
+                isInTree = true;
+            }
 
-        //todo implement
-        return false;
+        }
+        rearrangeTree(next);
+        return isInTree;
     }
     private void rearrangeTree(Node nod){
         /**
