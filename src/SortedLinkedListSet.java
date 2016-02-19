@@ -3,23 +3,16 @@
  */
 public class SortedLinkedListSet<E> implements SimpleSet{
     Node head;
-    //int size;
+    int size;
 
     public SortedLinkedListSet() {
         head = new Node(null);
-        //size = 0;
+        size = 0;
     }
 
     @Override
     public int size() {
-        Node tempNode = head;
-        int listSize = 0;
-        while(tempNode.getNext() != null){
-            tempNode = tempNode.getNext();
-            listSize++;
-        }
-        return listSize;
-        //return size;
+        return size;
     }
 
     @Override
@@ -40,7 +33,7 @@ public class SortedLinkedListSet<E> implements SimpleSet{
                 Node newNode = new Node(x);
                 newNode.next = tempNode.getNext();
                 tempNode.next = newNode;
-                //size++;
+                size++;
                 return true;
             }
             tempNode = tempNode.getNext();
@@ -57,7 +50,7 @@ public class SortedLinkedListSet<E> implements SimpleSet{
         while(tempNode.getNext() != null){
             if((tempNode.getNext().elt).equals(x)){
                 tempNode.next = tempNode.getNext().next;
-                //size--;
+                size--;
                 return true;
             }
             tempNode = tempNode.getNext();
@@ -84,7 +77,6 @@ public class SortedLinkedListSet<E> implements SimpleSet{
 
         Node(Comparable elt) {
             this.elt = elt;
-            next = null;
         }
 
         public Node getNext() {

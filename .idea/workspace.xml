@@ -4,7 +4,7 @@
     <list default="true" id="fc652d5b-fe60-4c9e-9def-6428997d9f1d" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SortedLinkedListSet.java" afterPath="$PROJECT_DIR$/src/SortedLinkedListSet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/TestSetSpeed.java" afterPath="$PROJECT_DIR$/src/TestSetSpeed.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/SplayTreeSet.java" afterPath="$PROJECT_DIR$/src/SplayTreeSet.java" />
     </list>
     <ignored path="DataStrukt-Lab3.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,24 +26,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="TestSetSpeed.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/TestSetSpeed.java">
+      <file leaf-file-name="SortedLinkedListSet.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/SortedLinkedListSet.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding />
+              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding>
+                <element signature="e#260#261#0" expanded="true" />
+                <element signature="e#287#288#0" expanded="true" />
+                <element signature="e#1946#1947#0" expanded="true" />
+                <element signature="e#1984#1985#0" expanded="true" />
+                <element signature="e#2017#2018#0" expanded="true" />
+                <element signature="e#2052#2053#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SortedLinkedListSet.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/SortedLinkedListSet.java">
+      <file leaf-file-name="SplayTreeSet.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/SplayTreeSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6009501">
-              <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.5938242">
+              <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
               <folding>
-                <element signature="e#2169#2170#0" expanded="true" />
-                <element signature="e#2204#2205#0" expanded="true" />
+                <element signature="e#152#153#0" expanded="true" />
+                <element signature="e#176#177#0" expanded="true" />
+                <element signature="e#2361#2362#0" expanded="true" />
+                <element signature="e#2399#2400#0" expanded="true" />
+                <element signature="e#2432#2433#0" expanded="true" />
+                <element signature="e#2469#2470#0" expanded="true" />
+                <element signature="e#2501#2502#0" expanded="true" />
+                <element signature="e#2536#2537#0" expanded="true" />
+                <element signature="e#2568#2569#0" expanded="true" />
+                <element signature="e#2604#2605#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -74,6 +89,7 @@
       <list>
         <option value="$PROJECT_DIR$/src/TestSetSpeed.java" />
         <option value="$PROJECT_DIR$/src/SortedLinkedListSet.java" />
+        <option value="$PROJECT_DIR$/src/SplayTreeSet.java" />
       </list>
     </option>
   </component>
@@ -527,11 +543,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/SortedLinkedListSet.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6009501">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
           <folding>
-            <element signature="e#2169#2170#0" expanded="true" />
-            <element signature="e#2204#2205#0" expanded="true" />
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#287#288#0" expanded="true" />
+            <element signature="e#1946#1947#0" expanded="true" />
+            <element signature="e#1984#1985#0" expanded="true" />
+            <element signature="e#2017#2018#0" expanded="true" />
+            <element signature="e#2052#2053#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/SplayTreeSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5938242">
+          <caret line="49" column="28" selection-start-line="49" selection-start-column="28" selection-end-line="49" selection-end-column="28" />
+          <folding>
+            <element signature="e#152#153#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#2361#2362#0" expanded="true" />
+            <element signature="e#2399#2400#0" expanded="true" />
+            <element signature="e#2432#2433#0" expanded="true" />
+            <element signature="e#2469#2470#0" expanded="true" />
+            <element signature="e#2501#2502#0" expanded="true" />
+            <element signature="e#2536#2537#0" expanded="true" />
+            <element signature="e#2568#2569#0" expanded="true" />
+            <element signature="e#2604#2605#0" expanded="true" />
           </folding>
         </state>
       </provider>
