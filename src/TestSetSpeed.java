@@ -3,7 +3,6 @@ import java.util.Random;
 class TestSetSpeed {
  public static void main(String[] args) {
 
-  
   final int implnumber = Integer.parseInt(args[0]);
 
   SimpleSet<Integer> set = 
