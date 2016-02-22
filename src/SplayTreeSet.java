@@ -23,7 +23,7 @@ public class SplayTreeSet<T> implements SimpleSet {
         }
         Node next = root;
         boolean keepLooping = true;
-        while(keepLooping) { //Bad but can't find anything smarter
+        while(keepLooping) {
             if(next.elt.compareTo(x) > 0){
                 if(next.getLeft() == null){
                     next.left = new Node(x);
