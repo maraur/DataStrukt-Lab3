@@ -9,11 +9,16 @@ public class TestSetCorrectness {
     public static void main(String[] args) {
 
         Random rand = new Random();
+        int numberOfFails = 0;
 
         final int implnumber = Integer.parseInt(args[0]);
         final int numbOfRestarts = Integer.parseInt(args[1]);
         final int numbOfRandOps = Integer.parseInt(args[2]);
         final int numbOfInts = Integer.parseInt(args[3]);
+        System.out.println("---------------------------------------------------");
+        System.out.println("Testing " + (implnumber == 1 ? "SortedLinkedListSet" : "SplayTreeSet") + " with " + numbOfRestarts + " restarts and "
+                            + numbOfRandOps + " random operations");
+        System.out.println("---------------------------------------------------");
 
         for( int i = 0 ; i < numbOfRestarts; i++){
             SimpleSet<Integer> set =
@@ -40,6 +45,7 @@ public class TestSetCorrectness {
                 if(!result){
                     System.out.println("Test failed on restart " + i + " operation " + j);
                     System.out.println("Failed on operation type " + operation);
+                    numberOfFails++;
                     try {
                         throw new Exception();
                     } catch (Exception e) {
@@ -48,6 +54,7 @@ public class TestSetCorrectness {
                 }
             }
         }
-
+        System.out.println("---------------------------------------------------\nTest complete with " + numberOfFails + " fails out of "
+                            + numbOfRestarts*numbOfRandOps + " operations\n---------------------------------------------------");
     }
 }

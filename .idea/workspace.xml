@@ -47,11 +47,11 @@
       <file leaf-file-name="TestSetCorrectness.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/TestSetCorrectness.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5668277">
-              <caret line="33" column="87" selection-start-line="33" selection-start-column="87" selection-end-line="33" selection-end-column="87" />
+            <state vertical-scroll-proportion="0.3542673">
+              <caret line="24" column="86" selection-start-line="24" selection-start-column="86" selection-end-line="24" selection-end-column="86" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#714#723#0" expanded="true" />
+                <element signature="e#1126#1135#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -588,11 +588,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/TestSetCorrectness.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5668277">
-          <caret line="33" column="87" selection-start-line="33" selection-start-column="87" selection-end-line="33" selection-end-column="87" />
+        <state vertical-scroll-proportion="0.3542673">
+          <caret line="24" column="86" selection-start-line="24" selection-start-column="86" selection-end-line="24" selection-end-column="86" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#714#723#0" expanded="true" />
+            <element signature="e#1126#1135#0" expanded="true" />
           </folding>
         </state>
       </provider>
