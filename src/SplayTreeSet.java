@@ -66,7 +66,7 @@ public class SplayTreeSet<T> implements SimpleSet {
         Node next = root;
         boolean keepLooping = true;
         boolean isInTree = false;
-        while (keepLooping) { //Bad but can't find anything smarter
+        while (keepLooping) {
             if (next.elt.compareTo(x) > 0) {
                 if (next.getLeft() == null) {
                     keepLooping = false;
@@ -88,26 +88,39 @@ public class SplayTreeSet<T> implements SimpleSet {
         return isInTree;
     }
     private void rearrangeTree(Node nod){
-        /**
-         * Loops and decides parents so it calls the appropriate zig, zigzig or zigzag
-         */
+        while(nod != root){
+            if(nod.getParent() == root){
+                zig(nod);
+            } else if((nod.getParent().left == nod && nod.getParent().getParent().left == nod.getParent())
+                    || (nod.getParent().right == nod && nod.getParent().getParent().right == nod.getParent())){
+                zigZig(nod);
+            }else{
+                zigZag(nod);
+            }
+        }
     }
-    private void zig(Node nod){
-        /**
-         * Exchange for rotateLeft/rotateRight?
-         */
+    private void zig(Node nod){ //seems capable of determining rotation?
+        if(nod.getParent() == root){ //might not be the best place to handle?
+            nod = root;
+        }
+        Node parent = nod.getParent();
+        nod.parent = parent.parent;
+        parent.parent = nod;
+        if (nod == parent.getLeft()){
+            parent.left = nod.right;
+            nod.right = parent;
+        } else {
+            parent.right = nod.left;
+            nod.left = parent;
+        }
     }
     private void zigZig(Node nod){
-        /**
-         * should be able to know if left-left or right-right
-         * call Zig twice
-         */
+        zig(nod.getParent());
+        zig(nod);
     }
     private void zigZag(Node nod){
-        /**
-         * should be able to know if left-right or right-left
-         * call Zig twice
-         */
+        zig(nod);
+        zig(nod.getParent());
     }
 
     public class Node {
