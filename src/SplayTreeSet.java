@@ -20,13 +20,16 @@ public class SplayTreeSet<T> implements SimpleSet {
         }
         if (root == null) {
             root = new Node(x);
+            size++;
         }
         Node next = root;
         boolean keepLooping = true;
         while(keepLooping) {
             if(next.elt.compareTo(x) > 0){
                 if(next.getLeft() == null){
-                    next.left = new Node(x);
+                    Node newNode = new Node(x);
+                    newNode.isRight = false;
+                    next.left = newNode;
                     size++;
                     keepLooping = false;
                     next = next.left;
@@ -35,7 +38,9 @@ public class SplayTreeSet<T> implements SimpleSet {
                 }
             }else if (next.elt.compareTo(x) < 0){
                 if(next.getRight() == null){
-                    next.right = new Node(x);
+                    Node newNode = new Node(x);
+                    newNode.isRight = true;
+                    next.right = newNode;
                     size++;
                     keepLooping = false;
                     next = next.right;
@@ -45,7 +50,6 @@ public class SplayTreeSet<T> implements SimpleSet {
             }else {
                 return false;
             }
-
         }
         rearrangeTree(next);
         return true;
@@ -55,17 +59,30 @@ public class SplayTreeSet<T> implements SimpleSet {
     public boolean remove(Comparable x) {
         boolean keepLooping = true;
         boolean isRemoved = false;
-        if (x == null || root == null) {
+        if (x == null) {
             throw new NullPointerException();
+        }
+        if(root == null){
+            return false;
         }
         Node next = root;
         while(keepLooping){
-            if(next.elt.compareTo(x) == 0) {
+            if(next.elt.compareTo(x) > 0) {
+                if(next.getLeft() == null) {
                     keepLooping = false;
-                    isRemoved = true;
-                    size--;
+                }else{
+                    next = next.getLeft();
+                }
+            }else if(next.elt.compareTo(x) < 0) {
+                if(next.getRight() == null) {
+                    keepLooping = false;
+                }else{
+                    next = next.getRight();
+                }
             }else{
-                isRemoved = false;
+                keepLooping = false;
+                isRemoved = true;
+                size--;
             }
         }
         if(isRemoved){
@@ -95,8 +112,11 @@ public class SplayTreeSet<T> implements SimpleSet {
 
     @Override
     public boolean contains(Comparable x) {
-        if (x == null || root == null) {
+        if (x == null) {
             throw new NullPointerException();
+        }
+        if(root == null){
+            return false;
         }
         Node next = root;
         boolean keepLooping = true;
@@ -116,8 +136,8 @@ public class SplayTreeSet<T> implements SimpleSet {
                 }
             } else {
                 isInTree = true;
+                keepLooping = false;
             }
-
         }
         rearrangeTree(next);
         return isInTree;
@@ -130,13 +150,15 @@ public class SplayTreeSet<T> implements SimpleSet {
      * bättre villkor. Kanske bryta ner i fler steg?
      */
     private void rearrangeTree(Node nod){     //todo FIX
-        while(nod != root){
-            if(nod.getParent() == root){
+        while(nod != root && nod.getParent() != null){
+            if(nod.getParent() == root) {
+                System.out.println(1);
                 zig(nod);
-            } else if((nod.getParent().left == nod && nod.getParent().getParent().left == nod.getParent()) //this row seemingly disrupts the program
-                    || (nod.getParent().right == nod && nod.getParent().getParent().right == nod.getParent())){
+            }else if(nod.getParent().isRightChild() == nod.isRightChild()){
+                System.out.println(2);
                 zigZig(nod);
             }else{
+                System.out.println(3);
                 zigZag(nod);
             }
         }
@@ -148,12 +170,18 @@ public class SplayTreeSet<T> implements SimpleSet {
         Node parent = nod.getParent();
         nod.parent = parent.parent;
         parent.parent = nod;
-        if (nod == parent.getLeft()){
-            parent.left = nod.right;
-            nod.right = parent;
+        if(parent.getLeft() != null){
+            if (nod == parent.getLeft()){
+                parent.left = nod.right;
+                parent.getLeft().isRight = false;
+                nod.right = parent;
+                parent.isRight = true;
+            }
         } else {
             parent.right = nod.left;
+            parent.right.isRight = true;
             nod.left = parent;
+            parent.isRight = false;
         }
     }
     private void zigZig(Node nod){
@@ -170,6 +198,7 @@ public class SplayTreeSet<T> implements SimpleSet {
         public Comparable elt;
 
         protected Node left, right, parent;
+        protected boolean isRight;
 
         Node(Comparable elt) {
             this.elt = elt;
@@ -183,5 +212,6 @@ public class SplayTreeSet<T> implements SimpleSet {
         public Node getRight(){
             return right;
         }
+        public boolean isRightChild(){ return isRight; }
     }
 }
