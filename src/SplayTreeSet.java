@@ -122,11 +122,18 @@ public class SplayTreeSet<T> implements SimpleSet {
         rearrangeTree(next);
         return isInTree;
     }
-    private void rearrangeTree(Node nod){
+    /**
+     * Problem here is row 135/136 where a nullpointer is thrown. Antagligen för att någon av alla jämförelser krånglar
+     * typ nod.getParent().left == nod kommer ju ge nullpointer on noden är en höger nod och föräldern inte har något vänsterbarn.
+     * Antingen måste vi behålla om det är ett höger eller vänsterbarn men jag vet inte var det ska läggas till i så fall, vi kan
+     * kontrollera alla mot null också med det känns fruktansvärt ineffektivt och i så fall är det nog smartast att komma på ett
+     * bättre villkor. Kanske bryta ner i fler steg?
+     */
+    private void rearrangeTree(Node nod){     //todo FIX
         while(nod != root){
             if(nod.getParent() == root){
                 zig(nod);
-            } else if((nod.getParent().left == nod && nod.getParent().getParent().left == nod.getParent())
+            } else if((nod.getParent().left == nod && nod.getParent().getParent().left == nod.getParent()) //this row seemingly disrupts the program
                     || (nod.getParent().right == nod && nod.getParent().getParent().right == nod.getParent())){
                 zigZig(nod);
             }else{
