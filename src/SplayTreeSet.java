@@ -53,14 +53,49 @@ public class SplayTreeSet<T> implements SimpleSet {
 
     @Override
     public boolean remove(Comparable x) {
-        //todo implement
-        size--;
-        return false;
+        boolean keepLooping = true;
+        boolean isRemoved = false;
+        if (x == null || root == null) {
+            throw new NullPointerException();
+        }
+        Node next = root;
+        while(keepLooping){
+            if(next.elt.compareTo(x) == 0) {
+                    keepLooping = false;
+                    isRemoved = true;
+                    size--;
+            }else{
+                isRemoved = false;
+            }
+        }
+        if(isRemoved){
+            rearrangeTree(next);
+            if(next.left != null && next.right != null) {
+                next.left.parent = null;
+                next.right.parent = null;
+                Node largestLeft = next.left;
+                while(largestLeft.right != null){
+                    largestLeft = largestLeft.right;
+                }
+                rearrangeTree(largestLeft);
+                root = largestLeft;
+                root.right = next.right;
+            }else if (next.left != null && next.right == null ){
+                next.left.parent = null;
+                root = next.left;
+            }else if(next.left == null && next.right != null){
+                next.right.parent = null;
+                root = next.right;
+            }else{
+                root = null; //if root has no children, just remove it
+            }
+        }
+        return isRemoved;
     }
 
     @Override
     public boolean contains(Comparable x) {
-        if (x == null) {
+        if (x == null || root == null) {
             throw new NullPointerException();
         }
         Node next = root;
