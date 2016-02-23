@@ -2,6 +2,8 @@ import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
 
+import static java.lang.System.*;
+
 /**
  * Created by fredrik on 2016-02-19.
  */
@@ -16,10 +18,10 @@ public class TestSetCorrectness {
         final int numbOfRestarts = Integer.parseInt(args[1]);
         final int numbOfRandOps = Integer.parseInt(args[2]);
         final int numbOfInts = Integer.parseInt(args[3]);
-        System.out.println("---------------------------------------------------");
-        System.out.println("Testing " + (implnumber == 1 ? "SortedLinkedListSet" : "SplayTreeSet") + " with " + numbOfRestarts + " restarts and "
+        out.println("---------------------------------------------------");
+        out.println("Testing " + (implnumber == 1 ? "SortedLinkedListSet" : "SplayTreeSet") + " with " + numbOfRestarts + " restarts and "
                             + numbOfRandOps + " random operations");
-        System.out.println("---------------------------------------------------");
+        out.println("---------------------------------------------------");
 
         for( int i = 0 ; i < numbOfRestarts; i++){
             SimpleSet<Integer> set =
@@ -29,23 +31,27 @@ public class TestSetCorrectness {
                 int operation = new Integer(rand.nextInt(4));
                 int randValue = new Integer(rand.nextInt(numbOfInts));
                 boolean result = false;
+                //System.out.println("try optype " + operation + " with value " + randValue);
                 switch(operation){
                     case 0:
                         result = (set.add(randValue) == testSet.add(randValue));
                         break;
                     case 1:
                         result = (set.remove(randValue) == testSet.remove(randValue));
+                     //   result = true;
                         break;
                     case 2:
                         result = (set.contains(randValue) == testSet.contains(randValue));
+                     //   result = true;
                         break;
                     case 3:
                         result = (set.size() == testSet.size());
+
                         break;
                 }
                 if(!result){
-                    System.out.println("Test failed on restart " + i + " operation " + j);
-                    System.out.println("Failed on operation type " + operation);
+                    out.println("Test failed on restart " + i + " operation " + j);
+                    out.println("Failed on operation type " + operation +" with input " +randValue);
                     numberOfFails++;
                     testFailed[operation]++;
                     try {
@@ -56,7 +62,7 @@ public class TestSetCorrectness {
                 }
             }
         }
-        System.out.println("---------------------------------------------------\nTest complete with " + numberOfFails + " fails out of "
+        out.println("---------------------------------------------------\nTest complete with " + numberOfFails + " fails out of "
                 + numbOfRestarts*numbOfRandOps + " operations. \n\"Add\" failed " + testFailed[0] + " times\n\"Remove\" failed " + testFailed[1] + " times" +
                 "\n\"Contains\" failed " + testFailed[2] + " times. \n\"Size\" failed " + testFailed[3] + " times.\n---------------------------------------------------");
     }
