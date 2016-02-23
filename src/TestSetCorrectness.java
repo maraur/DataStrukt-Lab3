@@ -31,18 +31,16 @@ public class TestSetCorrectness {
                 int operation = new Integer(rand.nextInt(4));
                 int randValue = new Integer(rand.nextInt(numbOfInts));
                 boolean result = false;
-                //System.out.println("try optype " + operation + " with value " + randValue);
                 switch(operation){
                     case 0:
                         result = (set.add(randValue) == testSet.add(randValue));
                         break;
                     case 1:
                         result = (set.remove(randValue) == testSet.remove(randValue));
-                     //   result = true;
                         break;
                     case 2:
                         result = (set.contains(randValue) == testSet.contains(randValue));
-                     //   result = true;
+
                         break;
                     case 3:
                         result = (set.size() == testSet.size());
