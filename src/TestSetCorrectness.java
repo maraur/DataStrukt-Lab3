@@ -10,6 +10,7 @@ public class TestSetCorrectness {
 
         Random rand = new Random();
         int numberOfFails = 0;
+        int[] testFailed = new int[4];
 
         final int implnumber = Integer.parseInt(args[0]);
         final int numbOfRestarts = Integer.parseInt(args[1]);
@@ -46,6 +47,7 @@ public class TestSetCorrectness {
                     System.out.println("Test failed on restart " + i + " operation " + j);
                     System.out.println("Failed on operation type " + operation);
                     numberOfFails++;
+                    testFailed[operation]++;
                     try {
                         throw new Exception();
                     } catch (Exception e) {
@@ -55,6 +57,7 @@ public class TestSetCorrectness {
             }
         }
         System.out.println("---------------------------------------------------\nTest complete with " + numberOfFails + " fails out of "
-                            + numbOfRestarts*numbOfRandOps + " operations\n---------------------------------------------------");
+                + numbOfRestarts*numbOfRandOps + " operations. \n\"Add\" failed " + testFailed[0] + " times\n\"Remove\" failed " + testFailed[1] + " times" +
+                "\n\"Contains\" failed " + testFailed[2] + " times. \n\"Size\" failed " + testFailed[3] + " times.\n---------------------------------------------------");
     }
 }
